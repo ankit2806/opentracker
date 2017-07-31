@@ -1,3 +1,8 @@
+PHP Framework:
+
+Codeiginter 2.2.6
+
+
 Access URLs:
 
 1) Create New Token
@@ -17,4 +22,5 @@ URL: http://localhost/directi/index.php/opentracker/visitsForToken?token=TOKEN
 
 
 Database:
+
 MySQL database is used.
