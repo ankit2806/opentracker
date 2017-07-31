@@ -1,0 +1,13 @@
+1) How will you store tokens? What kind of database? Why?
+Ans) tokens are the Unique Ids associated with each mail which will be delivered to multiple users. Due to high requests, the memory-based NoSQL database will be a good choice. It will read the token Ids faster than relational databases.
+
+If requirement permits, we can set the expiry with each token. Then a cron job will be issued which will delete the expired tokens from the database.
+
+2) How will you store open events? What kind of database? Why?
+Ans) To store the open events, we need consistency. Memory-based NoSQL database will be better choice.
+Cassandra provides the write consistency to the events. It can be distributed to multiple nodes.
+
+3) How will you generate stats? Will you need cron jobs to pre-compute some stats? Will you be able to provide real-time stats (pushes)?
+Ans) As per the given requirement, we can issue cron jobs to store the calculated stats every 5 minutes. This data will also be used to create stats for time intervals which are multiples of 5.
+
+If we use only the pre-processed data, then the data which we will get will be delayed by atleast 5 minutes. To improvise, on each request we can check for the data from the last stored timestamp till the current timestamp and store this result too in the database.
